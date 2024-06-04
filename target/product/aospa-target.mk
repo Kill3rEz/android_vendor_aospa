@@ -22,10 +22,6 @@ PRODUCT_SOURCE_ROOT_DIRS += -prebuilts/misc/protobuf_vendorcompat \
     -platform_testing/tests/automotive/display_safety \
     -device/generic/trusty/microdroid
 
-# Abstruct
-PRODUCT_PACKAGES += \
-    Abstruct
-
 # PenguinOS Setup Wizard (overrides the AOSP Provision stub)
 PRODUCT_PACKAGES += \
     PenguinSetupWizard
