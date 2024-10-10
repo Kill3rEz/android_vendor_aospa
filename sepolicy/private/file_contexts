@@ -7,3 +7,6 @@
 # Keystore compatibility
 /data/system/keystore_compat(/.*)?          u:object_r:keystore_compat_data_file:s0
 /data/system/tee_simulator(/.*)?            u:object_r:keystore_compat_data_file:s0
+
+# FS
+/system/bin/fsck\.ntfs                  u:object_r:fsck_exec:s0
