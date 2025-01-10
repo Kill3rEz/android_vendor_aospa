@@ -48,6 +48,7 @@ PRODUCT_PACKAGES += \
     Dialer \
     Etar \
     ExactCalculator \
+    Glimpse \
     Jelly \
     LatinIME
 endif
