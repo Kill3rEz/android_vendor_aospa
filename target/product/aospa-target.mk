@@ -3,6 +3,11 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# microG - implies a vanilla (no GMS) build
+ifeq ($(TARGET_INCLUDE_MICROG), true)
+TARGET_DISABLES_GMS := true
+endif
+
 # Enable support for APEX updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
@@ -172,6 +177,10 @@ $(call inherit-product-if-exists, vendor/google/modules/build/mainline_modules.m
 endif
 else
 $(warning Building Without GMS)
+ifeq ($(TARGET_INCLUDE_MICROG), true)
+$(warning Building With microG)
+$(call inherit-product, vendor/partner_gms/products/gms.mk)
+endif
 endif
 
 PRODUCT_PRODUCT_PROPERTIES += \
