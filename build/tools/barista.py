@@ -167,9 +167,11 @@ def main():
                         0, Element("remove-project", attrib={"name": upstream_name})
                     )
 
-        existing = barista_manifest.find(f".//project[@path='{path}']")
-        if existing is None:
-            existing = barista_manifest.find(f".//project[@name='{path}']")
+        existing = None
+        for p in barista_manifest.findall("project"):
+            if p.get("path", p.get("name", "")) == path:
+                existing = p
+                break
 
         if existing is None:
             barista_manifest.append(project)
