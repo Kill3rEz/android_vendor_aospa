@@ -53,7 +53,7 @@ PRODUCT_PACKAGES += \
     Glimpse \
     Jelly \
     LatinIME \
-    Messaging \
+    messaging \
     Recorder \
     Twelve
 endif
