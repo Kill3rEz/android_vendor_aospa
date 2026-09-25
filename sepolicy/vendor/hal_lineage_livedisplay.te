@@ -1,0 +1,9 @@
+# HwBinder IPC from client to server
+binder_call(hal_lineage_livedisplay_client, hal_lineage_livedisplay_server)
+
+hal_attribute_service(hal_lineage_livedisplay, hal_lineage_livedisplay_service)
+binder_call(hal_lineage_livedisplay_server, servicemanager)
+allow hal_lineage_livedisplay_client hal_lineage_livedisplay_service:service_manager find;
+
+# Allow binder communication with platform_app
+binder_call(hal_lineage_livedisplay, platform_app)

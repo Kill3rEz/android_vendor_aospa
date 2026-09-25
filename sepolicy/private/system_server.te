@@ -15,6 +15,9 @@ hal_client_domain(system_server, hal_aospa_powershare)
 
 # Lineage
 hal_client_domain(system_server, hal_lineage_health)
+hal_client_domain(system_server, hal_lineage_livedisplay)
+hal_client_domain(system_server, hal_lineage_powershare)
+hal_client_domain(system_server, hal_lineage_touch)
 
 # CachedAppOptimizer
 allow system_server zygote_tmpfs:file rw_file_perms;

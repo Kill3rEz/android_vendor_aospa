@@ -12,3 +12,24 @@ expandattribute hal_lineage_health_client true;
 attribute hal_lineage_health_server;
 expandattribute hal_lineage_health_server false;
 
+attribute hal_lineage_livedisplay;
+expandattribute hal_lineage_livedisplay true;
+attribute hal_lineage_livedisplay_client;
+expandattribute hal_lineage_livedisplay_client true;
+attribute hal_lineage_livedisplay_server;
+expandattribute hal_lineage_livedisplay_server false;
+
+attribute hal_lineage_powershare;
+expandattribute hal_lineage_powershare true;
+attribute hal_lineage_powershare_client;
+expandattribute hal_lineage_powershare_client true;
+attribute hal_lineage_powershare_server;
+expandattribute hal_lineage_powershare_server false;
+
+attribute hal_lineage_touch;
+expandattribute hal_lineage_touch true;
+attribute hal_lineage_touch_client;
+expandattribute hal_lineage_touch_client true;
+attribute hal_lineage_touch_server;
+expandattribute hal_lineage_touch_server false;
+
