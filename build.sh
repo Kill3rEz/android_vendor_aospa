@@ -46,12 +46,14 @@ function showHelpAndExit {
         echo -e "${CLR_BLD_BLU}  -d, --delta           Generate a delta ota from the specified target_files zip${CLR_RST}"
         echo -e "${CLR_BLD_BLU}  -z, --imgzip          Generate fastboot flashable image zip from signed target_files${CLR_RST}"
         echo -e "${CLR_BLD_BLU}  -n, --version         Specify build minor version (number)${CLR_RST}"
+        echo -e "${CLR_BLD_BLU}  -g, --gms             Build with GMS (package is tagged -gms)${CLR_RST}"
+        echo -e "${CLR_BLD_BLU}  -l, --vanilla         Build without GMS${CLR_RST}"
         exit 1
 }
 
 # Setup getopt.
-long_opts="help,clean,installclean,repo-sync,variant:,build-type:,jobs:,module:,sign-keys:,pwfile:,backup-unsigned,delta:,imgzip,version:"
-getopt_cmd=$(getopt -o hcirv:t:j:m:s:p:bd:zn: --long "$long_opts" \
+long_opts="help,clean,installclean,repo-sync,variant:,build-type:,jobs:,module:,sign-keys:,pwfile:,backup-unsigned,delta:,imgzip,version:,gms,vanilla"
+getopt_cmd=$(getopt -o hcirv:t:j:m:s:p:bd:zn:gl --long "$long_opts" \
             -n $(basename $0) -- "$@") || \
             { echo -e "${CLR_BLD_RED}\nError: Getopt failed. Extra args\n${CLR_RST}"; showHelpAndExit; exit 1;}
 
@@ -73,6 +75,8 @@ while true; do
         -d|--delta|d|delta) DELTA_TARGET_FILES="$2"; shift;;
         -z|--imgzip|img|imgzip) FLAG_IMG_ZIP=y;;
         -n|--version|n|version) AOSPA_USER_VERSION="$2"; shift;;
+        -g|--gms|g|gms) export TARGET_DISABLES_GMS=false;;
+        -l|--vanilla|l|vanilla) export TARGET_DISABLES_GMS=true;;
         --) shift; break;;
     esac
     shift
@@ -186,6 +190,16 @@ echo -e ""
 lunch "aospa_$DEVICE-$BUILD_TYPE"
 AOSPA_VERSION="$(get_build_var AOSPA_VERSION)"
 AOSPA_BUILD_VARIANT="$(get_build_var AOSPA_BUILD_VARIANT)"
+
+# Tag GMS packages so they can't be mistaken for vanilla ones. Taken from what the product
+# resolved rather than from the flags, since a device can set TARGET_DISABLES_GMS itself.
+if [ "$(get_build_var TARGET_DISABLES_GMS)" != "true" ]; then
+    AOSPA_BUILD_FLAVOR=gms
+    AOSPA_VERSION+="-gms"
+else
+    AOSPA_BUILD_FLAVOR=vanilla
+fi
+echo -e "${CLR_CYA}Build flavor: ${AOSPA_BUILD_FLAVOR}${CLR_RST}"
 
 # Where the packages are served from. {device}, {version} and {filename} are substituted.
 # Assigned rather than defaulted with :=, whose own closing brace would end at the first one

@@ -69,7 +69,7 @@ def main():
     if not device:
         raise SystemExit("No device in the package metadata; pass --device")
 
-    # PenguinOS-<version>-<date>-<device>.zip
+    # PenguinOS-<version>-<date>[-gms]-<device>.zip
     parts = filename.removesuffix(".zip").split("-")
     version = args.version or (parts[1] if len(parts) > 3 else "")
     build_type = args.build_type
