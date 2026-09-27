@@ -60,6 +60,10 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # Boot Animation
 $(call inherit-product, vendor/aospa/bootanimation/bootanimation.mk)
 
+# Calculator
+PRODUCT_PACKAGES += \
+    ExactCalculator
+
 # Camera
 PRODUCT_PACKAGES += \
     Aperture
