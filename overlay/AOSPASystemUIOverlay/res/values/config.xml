@@ -33,4 +33,7 @@
     <!-- Biometric Dialog values -->
     <integer name="biometric_dialog_text_gravity">1</integer> <!-- CENTER_HORIZONTAL -->
 
+    <!-- Enable stacked dual sim signal icons -->
+    <bool name="config_enable_stacked_icon">true</bool>
+
 </resources>
