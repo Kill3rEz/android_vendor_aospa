@@ -9,13 +9,14 @@ SPDX-FileCopyrightText: 2024 Paranoid Android
 SPDX-License-Identifier: Apache-2.0
 """
 
+import itertools
 import logging
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import List, Optional, Tuple
 from urllib.error import URLError
-from urllib.request import urlopen
+from urllib.request import Request, urlopen
 
 logging.basicConfig(
     level=logging.INFO,
@@ -54,8 +55,10 @@ class ManifestProcessor:
 
     @staticmethod
     def fetch_manifest(url: str) -> Optional[str]:
+        headers = {"Cookie": "_gitlab_session=gggg"}
+        request = Request(url, headers=headers)
         try:
-            with urlopen(url) as response:
+            with urlopen(request) as response:
                 return response.read().decode("utf-8")
         except URLError as e:
             logging.error(f"Failed to fetch manifest from {url}. Error: {e}")
@@ -144,14 +147,9 @@ class ManifestProcessor:
                             )
                             continue
 
-                        if project_name.startswith("clo/la/"):
-                            modified_name = project_name[7:]
-                            element.set("name", modified_name)
+                        element.set("name", project_name.removeprefix("clo/la/"))
 
-                        if (
-                            "remote" not in element.attrib
-                            or element.get("remote") != "clo-la"
-                        ):
+                        if element.get("remote") != "clo-la":
                             element.set("remote", "clo-la")
                             logging.info(
                                 f"Set 'clo-la' remote for project: {element.get('name')}"
@@ -175,7 +173,7 @@ class ManifestProcessor:
             root.append(comment)
             for name, tag, content in direct_entries:
                 project = ET.fromstring(content)
-                if "remote" not in project.attrib or project.get("remote") != "clo-la":
+                if project.get("remote") != "clo-la":
                     project.set("remote", "clo-la")
                     logging.info(
                         f"Set 'clo-la' remote for project: {project.get('name')}"
@@ -191,6 +189,31 @@ class ManifestProcessor:
                 root.append(project)
 
         return root
+
+    @staticmethod
+    def reapply_aospa_edits(root: ET.Element, existing_file: str) -> None:
+        if not Path(existing_file).exists():
+            return
+
+        parser = ET.XMLParser(target=ET.TreeBuilder(insert_comments=True))
+        existing = ET.parse(existing_file, parser=parser).getroot()
+        aospa_projects = existing.findall("project[@remote='aospa']")
+        if not aospa_projects:
+            return
+
+        aospa_paths = {project.get("path") for project in aospa_projects}
+
+        def is_clo_duplicate(element: ET.Element) -> bool:
+            return element.tag == "project" and element.get("path") in aospa_paths
+
+        root[:] = itertools.filterfalse(is_clo_duplicate, root)
+        root.append(ET.Comment(" AOSPA Edits "))
+        root.extend(aospa_projects)
+
+        for project in aospa_projects:
+            logging.info(
+                f"Kept AOSPA project: {project.get('name')} (path: {project.get('path')})"
+            )
 
     def process(self) -> bool:
         main_url = f"{self.BASE_URL}/{self.MAIN_MANIFEST_PATH.format(tag=self.tag)}"
@@ -216,6 +239,7 @@ class ManifestProcessor:
                     )
 
         combined_root = self.combine_manifests(sub_manifests)
+        self.reapply_aospa_edits(combined_root, self.output_file)
         ET.indent(combined_root)
         tree = ET.ElementTree(combined_root)
         tree.write(self.output_file, encoding="utf-8", xml_declaration=True)
