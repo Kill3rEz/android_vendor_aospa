@@ -93,6 +93,7 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 DONT_DEXPREOPT_PREBUILTS := true
 
 PRODUCT_DEXPREOPT_SPEED_APPS += \
+    GameSpace \
     Launcher3QuickStep \
     ParanoidSystemUI
 
@@ -303,6 +304,10 @@ PRODUCT_PACKAGES += \
     libwpa_client
 
 PRODUCT_VENDOR_MOVE_ENABLED := true
+
+# GameSpace
+PRODUCT_PACKAGES += \
+    GameSpace
 
 # LMOFreeform
 PRODUCT_PACKAGES += \
