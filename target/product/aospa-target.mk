@@ -76,6 +76,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     PenguinLaboratory
 
+# DeX: the touchpad for a connected screen's desktop
+PRODUCT_PACKAGES += \
+    PenguinDex
+
 # Dex2oat
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     dalvik.vm.dex2oat64.enabled=true
