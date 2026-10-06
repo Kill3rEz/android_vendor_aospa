@@ -51,3 +51,6 @@ add_service(system_server, linearmotor_vibrator_service);
 allow system_server keystore_compat_data_file:dir create_dir_perms;
 allow system_server keystore_compat_data_file:file create_file_perms;
 get_prop(system_server, keystore_compat_prop)
+
+# Play Integrity hooks
+get_prop(system_server, pih_disable_prop)
