@@ -76,6 +76,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     PenguinLaboratory
 
+# SystemUI with PenguinOS's features
+PRODUCT_PACKAGES += \
+    PenguinSystemUI
+
 # DeX: the touchpad for a connected screen's desktop
 PRODUCT_PACKAGES += \
     PenguinDex
