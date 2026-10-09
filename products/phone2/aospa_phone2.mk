@@ -5,6 +5,13 @@
 
 ifeq (aospa_phone2,$(TARGET_PRODUCT))
 
+# CAS
+TARGET_REQUIRES_HIDL_CAS_HAL := false
+
+# The 6.12 display HAL can't convert sRGB layers to P3 on its pipes, and its GPU fallback
+# hides translucent layers such as the photo picker, so keep the panel in sRGB
+TARGET_HAS_WIDE_COLOR_DISPLAY := false
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)

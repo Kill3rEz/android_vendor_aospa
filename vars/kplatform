@@ -3,4 +3,5 @@
 declare -A KPLATFORM_ARRAY=(
     ["taro"]="LA.VENDOR.1.0.r1-26900-WAIPIO.QSSI15.0"
     ["kalama"]="LA.VENDOR.13.2.0.r1-25900-KAILUA.QSSI15.0"
+    ["waipio66"]="LA.VENDOR.15.4.1.r1-11800-WAIPIO.QSSI16.0"
 )
