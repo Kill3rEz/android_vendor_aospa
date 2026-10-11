@@ -9,7 +9,6 @@
   <project path="vendor/qcom/opensource/agm" name="AOSPA/android_vendor_qcom_opensource_agm" remote="aospa" revision="calcite-8650" />
   <project path="vendor/qcom/opensource/audio-hal/primary-hal" name="AOSPA/android_hardware_qcom_audio" remote="aospa" revision="calcite-8650">
     <linkfile dest="vendor/qcom/defs/product-defs/vendor/audio_vendor_product.mk" src="configs/audio_vendor_product.mk" />
-    <linkfile dest="vendor/qcom/defs/product-defs/vendor/audio-techpack.mk" src="configs/pineapple/audio-techpack.mk" />
   </project>
   <project path="vendor/qcom/opensource/audioreach-graphservices" name="AOSPA/android_vendor_qcom_opensource_audioreach-graphservices" remote="aospa" revision="calcite-8650" />
   <project path="vendor/qcom/opensource/pal" name="AOSPA/android_vendor_qcom_opensource_arpal-lx" remote="aospa" revision="calcite-8650" />
