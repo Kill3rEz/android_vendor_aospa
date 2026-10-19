@@ -9,6 +9,7 @@ PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/apollo/aospa_apollo.mk \
     $(LOCAL_DIR)/bitra/aospa_bitra.mk \
     $(LOCAL_DIR)/bladerunner/aospa_bladerunner.mk \
+    $(LOCAL_DIR)/caihong/aospa_caihong.mk \
     $(LOCAL_DIR)/davinci/aospa_davinci.mk \
     $(LOCAL_DIR)/dubai/aospa_dubai.mk \
     $(LOCAL_DIR)/fuxi/aospa_fuxi.mk \
@@ -43,6 +44,7 @@ COMMON_LUNCH_CHOICES += \
     aospa_apollo-userdebug \
     aospa_bitra-userdebug \
     aospa_bladerunner-userdebug \
+    aospa_caihong-userdebug \
     aospa_davinci-userdebug \
     aospa_dubai-userdebug \
     aospa_fuxi-userdebug \
