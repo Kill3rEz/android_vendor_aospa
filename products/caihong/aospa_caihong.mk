@@ -8,6 +8,7 @@ ifeq (aospa_caihong,$(TARGET_PRODUCT))
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/large_screen_common.mk)
 
 # Inherit from the caihong device.
 $(call inherit-product, device/oneplus/caihong/device.mk)
