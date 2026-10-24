@@ -3,3 +3,4 @@ get_prop(shell, system_lmk_prop)
 
 # Allow shell to disable PIHooks
 set_prop(shell, pih_disable_prop)
+set_prop(shell, penguin_luminous_prop)

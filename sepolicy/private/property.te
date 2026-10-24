@@ -3,3 +3,6 @@ system_public_prop(pih_disable_prop)
 
 # Tethering
 system_internal_prop(device_config_tethering_prop)
+
+# Luminous
+system_public_prop(penguin_luminous_prop)

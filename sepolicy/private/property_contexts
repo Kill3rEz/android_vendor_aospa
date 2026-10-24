@@ -7,3 +7,4 @@ persist.device_config.tethering.        u:object_r:device_config_tethering_prop:
 # Keystore compatibility
 sys.keystore_compat.                   u:object_r:keystore_compat_prop:s0
 sys.tee_simulator.                     u:object_r:keystore_compat_prop:s0
+persist.sys.penguin.luminous         u:object_r:penguin_luminous_prop:s0 exact int

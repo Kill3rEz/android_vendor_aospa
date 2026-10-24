@@ -54,3 +54,6 @@ get_prop(system_server, keystore_compat_prop)
 
 # Play Integrity hooks
 get_prop(system_server, pih_disable_prop)
+
+# Luminous
+get_prop(system_server, penguin_luminous_prop)

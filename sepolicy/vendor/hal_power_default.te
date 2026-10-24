@@ -1,0 +1,4 @@
+# Laminar: set the scheduler utilization floor of hint session threads
+allow hal_power_default self:global_capability_class_set sys_nice;
+allow hal_power_default { appdomain surfaceflinger system_server }:process setsched;
+typeattribute hal_power_default mlstrustedsubject;
