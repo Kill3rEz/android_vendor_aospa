@@ -276,7 +276,7 @@ def main():
     # refuses to sync the whole list over one unknown path.
     if brewable_projects and not skip_sync:
         known = subprocess.run(
-            ["repo", "list", "--path-only"], capture_output=True, text=True
+            ["repo", "list", "--path-only", "--all"], capture_output=True, text=True
         ).stdout.split()
         if known:
             brewable_projects = [path for path in brewable_projects if path in known]
