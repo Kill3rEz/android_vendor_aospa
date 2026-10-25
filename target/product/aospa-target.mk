@@ -134,7 +134,7 @@ endif
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     GameSpace \
     Launcher3QuickStep \
-    ParanoidSystemUI
+    PenguinSystemUI
 
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.systemuicompilerfilter=speed
