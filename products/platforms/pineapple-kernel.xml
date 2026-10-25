@@ -76,6 +76,8 @@
   <project path="kernel_platform/prebuilts/ndk-r23" name="kernel_platform/toolchain/prebuilts/ndk/r23" remote="clo-la" revision="19ac7e4eded12adb99d4f613490dde6dd0e72664" upstream="refs/heads/ks-kernel.lnx.3.0.r48-rel" clone-depth="1" />
   <project path="kernel_platform/prebuilts/tradefed" name="kernel_platform/tools/tradefederation/prebuilts" remote="clo-la" revision="47fc8dbfffc41429e87a5e76188b7707d63792f4" upstream="refs/heads/ks-kernel.lnx.3.0.r48-rel" clone-depth="1" />
   <project path="kernel_platform/tools/mkbootimg" name="kernel_platform/system/tools/mkbootimg" remote="clo-la" revision="f233e500c9ee758f334c84a5aa19adefd8b1d8fc" upstream="refs/heads/ks-kernel.lnx.3.0.r48-rel" />
+  <!-- qti_kernel_headers, from the kernel_platform UAPI headers -->
+  <project path="kernel/qcom-headers" name="AOSPA/android_kernel_qcom-headers" remote="aospa" revision="calcite" />
   <!-- Out of tree kernel modules (techpacks, oplus, nxp). Checked out under
        vendor/ so the techpack Android.mk files build their DLKMs. -->
   <project path="vendor/oplus/sm8650-modules" name="android_kernel_oneplus_sm8650-modules" remote="caihong-clo">
