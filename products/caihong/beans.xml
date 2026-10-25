@@ -5,4 +5,5 @@
 -->
 <manifest>
   <include name="../platforms/pineapple.xml" />
+  <include name="../platforms/pineapple-kernel.xml" />
 </manifest>
