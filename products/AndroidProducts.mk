@@ -11,7 +11,6 @@ PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/bladerunner/aospa_bladerunner.mk \
     $(LOCAL_DIR)/caihong/aospa_caihong.mk \
     $(LOCAL_DIR)/davinci/aospa_davinci.mk \
-    $(LOCAL_DIR)/dodge/aospa_dodge.mk \
     $(LOCAL_DIR)/dubai/aospa_dubai.mk \
     $(LOCAL_DIR)/fuxi/aospa_fuxi.mk \
     $(LOCAL_DIR)/ishtar/aospa_ishtar.mk \
@@ -47,7 +46,6 @@ COMMON_LUNCH_CHOICES += \
     aospa_bladerunner-userdebug \
     aospa_caihong-userdebug \
     aospa_davinci-userdebug \
-    aospa_dodge-userdebug \
     aospa_dubai-userdebug \
     aospa_fuxi-userdebug \
     aospa_ishtar-userdebug \
